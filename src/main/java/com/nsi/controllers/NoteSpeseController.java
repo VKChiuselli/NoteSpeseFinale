@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import java.util.*;
+import javafx.scene.control.DatePicker;
 
 /**
  * Created by v.chiuselli on 18/10/2016.
@@ -62,9 +63,9 @@ public class NoteSpeseController {
     @FXML
     private TextField numeroField;
     @FXML
-    private TextField data_dalField;
+    private DatePicker data_dalField;
     @FXML
-    private TextField data_alField;
+    private DatePicker data_alField;
     @FXML
     private TextField viaggioField;
     @FXML
