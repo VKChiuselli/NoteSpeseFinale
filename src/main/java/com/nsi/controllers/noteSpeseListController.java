@@ -19,6 +19,9 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import static java.time.temporal.TemporalQueries.localDate;
 import java.util.EventListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -29,7 +32,6 @@ import static javax.xml.crypto.dsig.spec.ExcC14NParameterSpec.DEFAULT;
  * Created by v.chiuselli on 18/10/2016.
  */
 public class noteSpeseListController /*implements Initializable*/ {
-
 
     @FXML
     private Label label_numero;
@@ -44,15 +46,14 @@ public class noteSpeseListController /*implements Initializable*/ {
     @FXML
     private Label label_ritorno;
 
-
     @FXML
     private Button buttonSalva;
     @FXML
     private TextField numeroField;
     @FXML
-    private TextField data_dalField;
+    private DatePicker data_dalField;
     @FXML
-    private TextField data_alField;
+    private DatePicker data_alField;
     @FXML
     private TextField viaggioField;
     @FXML
@@ -60,77 +61,68 @@ public class noteSpeseListController /*implements Initializable*/ {
     @FXML
     private TextField ritornoField;
 
-
     //    @FXML
 //    private ListView<NoteSpese> listaNoteSpese;
 //
-
     // private NoteSpese noteSpese;
-
-
     private ObservableList<NoteSpese> noteSpese;
 
     NoteSpeseDao nsd = new NoteSpeseDao();
 
     NoteSpese nscUNO = new NoteSpese();
 
-
     public void setParametri(NoteSpese noteSpese) {
 
         System.out.println("setto i parametri PID: " + noteSpese);
 
         numeroField.setText(Integer.toString(noteSpese.getNumero()));
-        data_dalField.setText(noteSpese.getData_dal().toString());
-        data_alField.setText(noteSpese.getData_dal().toString());
+       
+
+        data_dalField.setValue(noteSpese.getData_dal().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+       data_alField.setValue(noteSpese.getData_al().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         viaggioField.setText(noteSpese.getViaggio());
         partenzaField.setText(noteSpese.getPartenza());
         ritornoField.setText(noteSpese.getRitorno());
     }
 
-
     @FXML
     public void initialize() {
 
-
         System.out.println("Sbagliato PID: " + nscUNO);
 
-
         buttonSalva.setOnAction(event -> {
-
 
             try {
 
                 Integer numero = Integer.parseInt(numeroField.getText());
                 DateFormat format = DateFormat.getDateInstance(DateFormat.DEFAULT);
-                Date data1 = format.parse(data_dalField.getText());
-                Date data2 = format.parse(data_alField.getText());
+                 java.util.Date date1 = java.sql.Date.valueOf(data_dalField.getValue());
+                  java.util.Date date2 = java.sql.Date.valueOf(data_alField.getValue());
+               // Date data1 = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+           //     Date data2 = format.parse(data_alField.getText());
                 String viaggio = viaggioField.getText();
                 String partenza = partenzaField.getText();
                 String ritorno = ritornoField.getText();
 
-
                 nscUNO.setNumero(numero);
-                nscUNO.setData_al(data2);
-                nscUNO.setData_dal(data1);
+                nscUNO.setData_dal(date1);
+                nscUNO.setData_al(date2);
                 nscUNO.setViaggio(viaggio);
                 nscUNO.setPartenza(partenza);
                 nscUNO.setRitorno(ritorno);
 
                 //     NoteSpese noteSpese = new NoteSpese(numero, data1, data2, viaggioField.getText(), partenzaField.getText(), ritornoField.getText());
                 //      nsd.update(nscUNO);
-          //      nsd.updateNoteSpese(numero, data1, data2, viaggioField.getText(), partenzaField.getText(), ritornoField.getText());
-
+                //      nsd.updateNoteSpese(numero, data1, data2, viaggioField.getText(), partenzaField.getText(), ritornoField.getText());
                 System.out.println("Dopo update PID: " + nscUNO);
 
-nsd.updateNoteSpese(nscUNO);
+                nsd.updateNoteSpese(nscUNO);
 
-
-            } catch (ParseException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
         });
-
 
 //    listaSpesa.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 //    listaNoteSpese.setItems(noteSpese);
@@ -154,13 +146,6 @@ nsd.updateNoteSpese(nscUNO);
 //            return cellu;
 //        }
         //  });
-
-
     }
 
-
 }
-
-
-
-
