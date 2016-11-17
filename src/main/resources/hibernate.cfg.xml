@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:hsqldb:file:~\NotaSpeseDB</property>
+        <!--Configurazione del DB - DRIVER, DIALETTO SQL, Server location user e pass  segnamoci che semb ra case INSENSITIVE-->
+        <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect </property>
+        <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
+        <property name="hibernate.connection.username">SA</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.hbm2ddl.auto" >create-drop</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="u+6se_sql_comments">false</property>
+        <mapping class="com.nsi.pojo.Utente"></mapping>
+        <mapping class="com.nsi.pojo.TipiSpese"></mapping>
+        <mapping class="com.nsi.pojo.NoteSpese"></mapping>
+    </session-factory>
+
+</hibernate-configuration>

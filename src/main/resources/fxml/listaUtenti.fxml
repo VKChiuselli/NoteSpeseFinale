@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nsi.fxmlController.ListaUtentiController">
+   <children>
+      <MenuBar fx:id="fxMenuBar">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="fxInserisci" mnemonicParsing="false" text="Inserisci" />
+            </items>
+              <items>
+                  <MenuItem fx:id="fxCancella" mnemonicParsing="false" text="Elimina" />
+              </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="tableView" editable="true" prefHeight="400.0" prefWidth="600.0">
+          <columns>
+              <TableColumn fx:id="fxId" prefWidth="100.0" text="Id" />
+              <TableColumn fx:id="fxNome" prefWidth="100.0" text="Nome" />
+              <TableColumn fx:id="fxCognome" prefWidth="100.0" text="Cognome" />
+              <TableColumn fx:id="fxMatricola" prefWidth="100.0" text="Matricola" />
+              <TableColumn fx:id="fxUfficio" prefWidth="100.0" text="Ufficio" />
+              <TableColumn fx:id="fxDetail" prefWidth="100.0" text="Dettaglio"/>
+          </columns>
+      </TableView>
+   </children>
+</VBox>
