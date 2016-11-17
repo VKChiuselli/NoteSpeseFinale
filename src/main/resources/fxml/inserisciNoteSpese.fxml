@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="listains" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nsi.controllers.inserimentoNoteSpeseController">
+   <children>
+      <TextField fx:id="numeroField" layoutX="144.0" layoutY="51.0" />
+      <TextField fx:id="data_dalField" layoutX="144.0" layoutY="105.0" />
+      <TextField fx:id="data_alField" layoutX="144.0" layoutY="151.0" />
+      <TextField fx:id="viaggioField" layoutX="144.0" layoutY="200.0" />
+      <TextField fx:id="ritornoField" layoutX="144.0" layoutY="256.0" />
+      <TextField fx:id="partenzaField" layoutX="144.0" layoutY="315.0" />
+      <Label layoutX="41.0" layoutY="55.0" text="numero" />
+      <Label layoutX="41.0" layoutY="109.0" text="data dal" />
+      <Label layoutX="41.0" layoutY="155.0" text="data al" />
+      <Label layoutX="41.0" layoutY="204.0" text="viaggio" />
+      <Label layoutX="41.0" layoutY="260.0" text="partenza" />
+      <Label layoutX="41.0" layoutY="319.0" text="ritorno" />
+      <Button fx:id="buttonSalva" layoutX="417.0" layoutY="200.0" mnemonicParsing="false" text="SALVA" />
+   </children>
+</AnchorPane>

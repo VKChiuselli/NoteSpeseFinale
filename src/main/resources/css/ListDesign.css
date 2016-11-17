@@ -1,0 +1,22 @@
+.list-view {
+    -fx-padding: 30px;
+    -fx-background-color: darkred ;
+}
+
+.list-cell {
+    -fx-padding: 2px 20px 20px 20px;
+    -fx-background-color: transparent, -fx-background ;
+    -fx-background-insets: 0px, 2px ;
+    -fx-alignment: center;
+    -fx-alignment: bottom-center;
+}
+
+.list-cell:empty {
+    -fx-padding: 2px ;
+    -fx-background-color: transparent ;
+    -fx-background-insets: 0 ;
+}
+.list-cell:selected {
+    -fx-background-color: antiquewhite;
+    -fx-text-fill: black;
+}
