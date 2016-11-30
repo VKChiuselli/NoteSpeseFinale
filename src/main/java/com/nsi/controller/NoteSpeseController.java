@@ -1,4 +1,4 @@
-package com.nsi.controllers;
+package com.nsi.controller;
 
 import com.nsi.dao.NoteSpeseDao;
 import com.nsi.main;
