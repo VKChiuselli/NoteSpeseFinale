@@ -19,9 +19,9 @@ public class NoteSpeseDao extends GenericDao {
         super();
     }
 
-    public boolean inserisciNoteSpese(String agente, String matricola, String ufficio, String viaggio, String partenza, String ritorno, List<TipiSpese> tipoSpesa) {
+    public String inserisciNoteSpese(String agente, String matricola, String ufficio, String viaggio, String partenza, String ritorno, List<TipiSpese> tipoSpesa) {
 
-        boolean risposta = false;
+        String risposta ;
         NoteSpese noteSpese = new NoteSpese();
 
         noteSpese.setAgente(agente);
@@ -33,15 +33,9 @@ public class NoteSpeseDao extends GenericDao {
         noteSpese.setTipiSpese(tipoSpesa);
 
 
-        try {
-            if (save(noteSpese) != null) {
-                risposta = true;
-            }
-        } catch (RuntimeException e) {
-            System.out.println(e);
-        }
+      
 
-        return risposta;
+        return risposta=(String)save(noteSpese);
 
     }
 

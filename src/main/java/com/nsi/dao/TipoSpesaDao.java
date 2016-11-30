@@ -10,24 +10,18 @@ public class TipoSpesaDao extends GenericDao {
     public TipoSpesaDao() {
         super();
     }
-    public boolean inserisciTipoSpesa(String descrizione, String importo, String iva) {
+    public String inserisciTipoSpesa(String descrizione, String importo, String iva) {
 
-        boolean risposta = false;
+        String risposta;
 
         TipiSpese tipoSpesa = new TipiSpese();
         tipoSpesa.setDescrizione(descrizione);
         tipoSpesa.setImporto(importo);
         tipoSpesa.setIva(iva);
-        try {
-            if (save(tipoSpesa) != null) {
-                risposta = true;
-            }
-        } catch (RuntimeException e) {
-            System.out.println(e);
-        }
+     
         
          
-        return risposta;
+        return risposta=(String)save(tipoSpesa);
     }
 
     public ObservableList<TipiSpese> caricaSpese() {
