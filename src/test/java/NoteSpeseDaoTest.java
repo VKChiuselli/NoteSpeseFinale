@@ -31,7 +31,7 @@ public class NoteSpeseDaoTest {
 
         NoteSpeseDao noteSpeseDao = new NoteSpeseDao();
 
-        NoteSpese noteSpese= new NoteSpese(numero,data1,data2, viaggio, partenza, viaggio);
+        NoteSpese noteSpese= new NoteSpese("agente","12324321","Trasferta","Roma","Bologna");
 
         boolean result = noteSpeseDao.updateNoteSpese(noteSpese);
 
@@ -42,7 +42,7 @@ public class NoteSpeseDaoTest {
 /**
  * controllo se è VERA la data immessa.
  */
-        System.out.println(data1 + " cosa mi dice...... " + noteSpese.getData_dal());
+        
        // assertEquals(data1, noteSpese.getData_dal());
    //    assertTrue(result);
     }

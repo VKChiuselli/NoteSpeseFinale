@@ -11,7 +11,6 @@ import java.util.*;
 /**
  * Created by v.chiuselli on 14/10/2016.
  */
-
 @Entity
 @Access(AccessType.FIELD)
 @Table(name = "NoteSpese")
@@ -21,20 +20,368 @@ public class NoteSpese implements Externalizable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "uuid", unique = true)
-    private String _id;
+    private String id;
 
-   /* @Transient
-    private String _id_utente;
-    private StringProperty id_utente;*/
-
-
-    //non nullo
     @Transient
-    private int _numero = 1234;   @Transient
+    @Column(nullable = false)
+    private String _agente;
+
+    private StringProperty agente;
+
+    @Transient
+    @Column(nullable = false)
+    private String _matricola;
+
+    private StringProperty matricola;
+
+    @Transient
+    @Column(nullable = false)
+    private String _ufficio;
+
+    private StringProperty ufficio;
+
+    @Transient
+    @Column(nullable = false)
+    private String _viaggio;
+
+    private StringProperty viaggio;
+
+    @Transient
+    @Column(nullable = false)
+    private String _partenza;
+
+    private StringProperty partenza;
+
+    @Transient
+    @Column(nullable = false)
+    private String _ritorno;
+    private StringProperty ritorno;
+
+   @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tipiSpese", nullable = true)
+    private Set<TipiSpese> _tipiSpese;
+
+    @Transient
+    private SetProperty<TipiSpese> tipiSpese; 
+
+    public String getId() {
+        return id;
+    }
+
+    private void setId(String id) {
+        this.id = id;
+    }
+
+    public NoteSpese(String _agente, String _matricola, String _viaggio, String _partenza, String _ritorno) {
+        //this._tipiSpese = tipiSpese;
+        this._agente = _agente;
+        this._matricola = _matricola;
+        this._viaggio = _viaggio;
+        this._partenza = _partenza;
+        this._ritorno = _ritorno;
+    }
+
+    public NoteSpese() {
+    }
+
+    @Access(AccessType.PROPERTY)
+    public String getAgente() {
+        if (this.agente == null) {
+            return _agente;
+        } else {
+            return agente.get();
+        }
+    }
+
+    public void setAgente(String agente) {
+        if (this.agente == null) {
+            _agente = agente;
+        } else {
+            this.agente.set(agente);
+        }
+    }
+
+    @Access(AccessType.PROPERTY)
+    public String getMatricola() {
+        if (this.matricola == null) {
+            return _matricola;
+        } else {
+            return matricola.get();
+        }
+    }
+
+    public void setMatricola(String matricola) {
+        if (this.matricola == null) {
+            _matricola = matricola;
+        } else {
+            this.matricola.set(matricola);
+        }
+    }
+
+    @Access(AccessType.PROPERTY)
+    public String getUfficio() {
+        if (this.ufficio == null) {
+            return _ufficio;
+        } else {
+            return ufficio.get();
+        }
+    }
+
+    
+      public void setTipiSpese(Set<TipiSpese> c) {
+     if (this.tipiSpese == null) {
+            _tipiSpese =  tipiSpese;
+        } else {
+            this.tipiSpese.set((SetProperty)tipiSpese);
+        }
+    }
+    
+//    public void setTipiSpese(SetProperty tipiSpese) {
+//        if (this.tipiSpese == null) {
+//            _tipiSpese = tipiSpese;
+//        } else {
+//            this.tipiSpese.set(tipiSpese);
+//        }}
+
+    
+
+    /*   public void setTipiSpese(Set<TipiSpese>  tipiSpese) {
+        if (this.tipiSpese == null) {
+            _tipiSpese =  tipiSpese;
+        } else {
+            this.tipiSpese.set(tipiSpese);
+        }
+    } */
+
+
+//    @Access(AccessType.PROPERTY)
+//    public Set<TipiSpese> getTipiSpese() {
+//        if (this.tipiSpese == null) {
+//            return _tipiSpese;
+//        } else {
+//            return tipiSpese.get();
+//        }
+//    }
+
+    
+public void setUfficio(String ufficio) {
+        if (this.ufficio == null) {
+            _ufficio = ufficio;
+        } else {
+            this.ufficio.set(ufficio);
+        }
+
+    }
+    @Access(AccessType.PROPERTY)
+    public String getViaggio() {
+        if (this.viaggio == null) {
+            return _viaggio;
+        } else {
+            return viaggio.get();
+        }
+    }
+
+    public void setViaggio(String viaggio) {
+        if (this.viaggio == null) {
+            _viaggio = viaggio;
+        } else {
+            this.viaggio.set(viaggio);
+        }
+    }
+
+    @Access(AccessType.PROPERTY)
+    public String getPartenza() {
+        if (this.partenza == null) {
+            return _partenza;
+        } else {
+            return partenza.get();
+        }
+    }
+
+    public void setPartenza(String partenza) {
+        if (this.partenza == null) {
+            _partenza = partenza;
+        } else {
+            this.partenza.set(partenza);
+        }
+    }
+
+    /* @Access(AccessType.PROPERTY)
+    public TipiSpese getTipiSpese() {
+        if (this.tipiSpese == null) {
+            return _tipiSpese;
+        } else {
+            return (TipiSpese)tipiSpese.get();
+        }
+    }
+
+    
+    
+    
+      public SimpleObjectProperty tipiSpeseProperty() {
+        if (tipiSpese == null) {
+            tipiSpese = new SimpleObjectProperty(this, "tipiSpese", _tipiSpese);
+        }
+        return (SimpleObjectProperty) tipiSpese;
+    }
+     */
+ /*public String getId_utente() {
+        if (this.id_utente == null) {
+            return _id_utente;
+        } else {
+            return id_utente.get();
+        }
+    }
+
+    public void setId_utente(String id_utente) {
+        if (this.id_utente == null) {
+            _id_utente = id_utente;
+        } else {
+            this.id_utente.set(id_utente);
+        }
+    }*/
+    @Access(AccessType.PROPERTY)
+    public String getRitorno() {
+        if (this.ritorno == null) {
+            return _ritorno;
+        } else {
+            return ritorno.get();
+        }
+    }
+
+    public void setRitorno(String ritorno) {
+        if (this.ritorno == null) {
+            _ritorno = ritorno;
+        } else {
+            this.ritorno.set(ritorno);
+        }
+    }
+
+    public SimpleStringProperty agente() {
+
+        if (agente == null) {
+            agente = new SimpleStringProperty(this, "agente", _agente);
+        }
+        return (SimpleStringProperty) agente;
+    }
+
+    public SimpleStringProperty matricola() {
+
+        if (matricola == null) {
+            matricola = new SimpleStringProperty(this, "matricola", _matricola);
+        }
+        return (SimpleStringProperty) matricola;
+    }
+
+    public SimpleStringProperty ufficio() {
+
+        if (ufficio == null) {
+            ufficio = new SimpleStringProperty(this, "ufficio", _ufficio);
+        }
+        return (SimpleStringProperty) ufficio;
+    }
+
+    public SimpleStringProperty viaggioProperty() {
+
+        if (viaggio == null) {
+            viaggio = new SimpleStringProperty(this, "viaggio", _viaggio);
+        }
+        return (SimpleStringProperty) viaggio;
+    }
+
+    public SimpleStringProperty partenzaProperty() {
+
+        if (partenza == null) {
+            partenza = new SimpleStringProperty(this, "partenza", _partenza);
+        }
+        return (SimpleStringProperty) partenza;
+    }
+
+    public SimpleStringProperty ritornoProperty() {
+
+        if (ritorno == null) {
+            ritorno = new SimpleStringProperty(this, "ritorno", _ritorno);
+        }
+        return (SimpleStringProperty) ritorno;
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+
+    }
+
+  
+
+}
+
+/*
+    @Access(AccessType.PROPERTY)
+    public Date getData_dal() {
+        if (this.data_dal == null) {
+            return _data_dal;
+        } else {
+            return data_dal.get();
+        }
+    }
+
+    public void setData_dal(Object data_dal) {
+        if (this.data_dal == null) {
+            _data_dal = (Date) data_dal;
+        } else {
+            this.data_dal.set((Date) data_dal);
+        }
+    }
+
+    @Access(AccessType.PROPERTY)
+    public Date getData_al() {
+        if (this.data_al == null) {
+            return _data_al;
+        } else {
+            return (Date) data_al.get();
+        }
+    }
+
+    public void setData_al(Object data_al) {
+        if (this.data_al == null) {
+            _data_al = (Date) data_al;
+        } else {
+            this.data_al.set(data_al);
+        }
+    }
+
+    public SimpleIntegerProperty numeroProperty() {
+        if (numero == null) {
+            numero = new SimpleIntegerProperty(this, "numero", _numero);
+        }
+        return (SimpleIntegerProperty) numero;
+    }
+
+    public SimpleObjectProperty data_dalProperty() {
+        if (data_dal == null) {
+            data_dal = new SimpleObjectProperty(this, "data_dal", _data_dal);
+        }
+        return (SimpleObjectProperty) data_dal;
+    }
+
+    public SimpleObjectProperty data_alProperty() {
+        if (data_al == null) {
+            data_al = new SimpleObjectProperty(this, "data_al", _data_al);
+        }
+        return (SimpleObjectProperty) data_al;
+    }
+ */
+
+ /*
+    @Transient
+    private int _numero = 1234;
+    @Transient
     private IntegerProperty numero;
 
-
-    //  DateFormat fmt= new SimpleDateFormat("MM/dd/yy");
 //non nullo
     @Transient
     private ObjectProperty<Date> data_dal;
@@ -45,23 +392,8 @@ public class NoteSpese implements Externalizable {
     private ObjectProperty data_al;
     @Transient
     private Date _data_al;
-
-    //non nullo
-    @Transient
-    private String _viaggio = "Milano-Budapest";  @Transient
-    private StringProperty viaggio;
-
-    @Transient
-    private String _partenza; @Transient
-    private StringProperty partenza;
-
-    @Transient
-    private String _ritorno;  @Transient
-    private StringProperty ritorno;
-
-    /*
-
-
+ */
+ /*
     @Transient
      private double _totali;
      private DoubleProperty totali;
@@ -120,203 +452,8 @@ public class NoteSpese implements Externalizable {
     @Transient
      private double _totale_rimborso_km;
      private DoubleProperty totale_rimborso_km;
-*/
-
-
-    public NoteSpese() {
-    }
-
-    public NoteSpese(int _numero, Date _data_dal, Date _data_al, String _viaggio, String _partenza, String _ritorno) {
-        this._numero = _numero;
-        this._data_dal = _data_dal;
-        this._data_al = _data_al;
-        this._viaggio = _viaggio;
-        this._partenza = _partenza;
-        this._ritorno = _ritorno;
-    }
-
-/*
-    public String get_id() {
-        return _id;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
-    }
-*/
-
-    @Access(AccessType.PROPERTY)
-    @Column(nullable = false)
-    public int getNumero() {
-        if (this.numero == null) {
-            return _numero;
-        } else {
-            return this.numero.get();
-        }
-    }
-
-    public void setNumero(int numero) {
-        if (this.numero == null) {
-            _numero = numero;
-        } else {
-            this.numero.set(numero);
-        }
-    }
-
-
-    @Access(AccessType.PROPERTY)
-    @Column(nullable = false)
-    public String getViaggio() {
-        if (this.viaggio == null) {
-            return _viaggio;
-        } else {
-            return viaggio.get();
-        }
-    }
-
-    public void setViaggio(String viaggio) {
-        if (this.viaggio == null) {
-            _viaggio = viaggio;
-        } else {
-            this.viaggio.set(viaggio);
-        }
-    }
-
-    @Access(AccessType.PROPERTY)
-    @Column(nullable = false)
-    public String getPartenza() {
-        if (this.partenza == null) {
-            return _partenza;
-        } else {
-            return partenza.get();
-        }
-    }
-
-    public void setPartenza(String partenza) {
-        if (this.partenza == null) {
-            _partenza = partenza;
-        } else {
-            this.partenza.set(partenza);
-        }
-    }
-
-
-    /*public String getId_utente() {
-        if (this.id_utente == null) {
-            return _id_utente;
-        } else {
-            return id_utente.get();
-        }
-    }
-
-    public void setId_utente(String id_utente) {
-        if (this.id_utente == null) {
-            _id_utente = id_utente;
-        } else {
-            this.id_utente.set(id_utente);
-        }
-    }*/
-
-
-    @Access(AccessType.PROPERTY)
-    public String getRitorno() {
-        if (this.ritorno == null) {
-            return _ritorno;
-        } else {
-            return ritorno.get();
-        }
-    }
-
-    public void setRitorno(String ritorno) {
-        if (this.ritorno == null) {
-            _ritorno = ritorno;
-        } else {
-            this.ritorno.set(ritorno);
-        }
-    }
-
-    @Access(AccessType.PROPERTY)
-    public Date getData_dal() {
-        if (this.data_dal == null) {
-            return _data_dal;
-        } else {
-            return data_dal.get();
-        }
-    }
-
-    public void setData_dal(Object data_dal) {
-        if (this.data_dal == null) {
-            _data_dal = (Date) data_dal;
-        } else {
-            this.data_dal.set((Date) data_dal);
-        }
-    }
-
-    @Access(AccessType.PROPERTY)
-    public Date getData_al() {
-        if (this.data_al == null) {
-            return _data_al;
-        } else {
-            return (Date) data_al.get();
-        }
-    }
-
-    public void setData_al(Object data_al) {
-        if (this.data_al == null) {
-            _data_al = (Date) data_al;
-        } else {
-            this.data_al.set(data_al);
-        }
-    }
-
-    public SimpleIntegerProperty numeroProperty() {
-        if (numero == null) {
-            numero = new SimpleIntegerProperty(this, "numero", _numero);
-        }
-        return (SimpleIntegerProperty) numero;
-    }
-
-    public SimpleObjectProperty data_dalProperty() {
-        if (data_dal == null) {
-            data_dal = new SimpleObjectProperty(this, "data_dal", _data_dal);
-        }
-        return (SimpleObjectProperty) data_dal;
-    }
-
-    public SimpleObjectProperty data_alProperty() {
-        if (data_al == null) {
-            data_al = new SimpleObjectProperty(this, "data_al", _data_al);
-        }
-        return (SimpleObjectProperty) data_al;
-    }
-
-
-    public SimpleStringProperty viaggioProperty() {
-
-        if (viaggio == null) {
-            viaggio = new SimpleStringProperty(this, "viaggio", _viaggio);
-        }
-        return (SimpleStringProperty) viaggio;
-    }
-
-    public SimpleStringProperty partenzaProperty() {
-
-        if (partenza == null) {
-            partenza = new SimpleStringProperty(this, "partenza", _partenza);
-        }
-        return (SimpleStringProperty) partenza;
-    }
-
-
-    public SimpleStringProperty ritornoProperty() {
-
-        if (ritorno == null) {
-            ritorno = new SimpleStringProperty(this, "ritorno", _ritorno);
-        }
-        return (SimpleStringProperty) ritorno;
-    }
-
-   /* public SimpleStringProperty id_utenteProperty() {
+ */
+ /* public SimpleStringProperty id_utenteProperty() {
 
         if (id_utente == null) {
             id_utente = new SimpleStringProperty(this, "id_utente", _id_utente);
@@ -678,6 +815,7 @@ public class NoteSpese implements Externalizable {
     }
 
 
+
     public SimpleDoubleProperty spese_rappresentanzaProperty() {
         if (spese_rappresentanza == null) {
             spese_rappresentanza = new SimpleDoubleProperty(this, "spese_rappresentanza", _spese_rappresentanza);
@@ -742,18 +880,31 @@ public class NoteSpese implements Externalizable {
         }
         return (SimpleDoubleProperty) totale_km;
     }
-*/
-
-
-
-    @Override
-    public void writeExternal(ObjectOutput out) throws IOException {
-
+ */
+ /*
+    public String get_id() {
+        return _id;
     }
 
-    @Override
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-
+    public void set_id(String _id) {
+        this._id = _id;
     }
-}
+ */
+ /*
+    @Access(AccessType.PROPERTY)
+    @Column(nullable = false)
+    public int getNumero() {
+        if (this.numero == null) {
+            return _numero;
+        } else {
+            return this.numero.get();
+        }
+    }
 
+    public void setNumero(int numero) {
+        if (this.numero == null) {
+            _numero = numero;
+        } else {
+            this.numero.set(numero);
+        }
+    }*/

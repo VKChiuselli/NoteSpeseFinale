@@ -1,6 +1,7 @@
 package com.nsi;
 
 import com.nsi.dao.NoteSpeseDao;
+import com.nsi.dao.TipoSpesaDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,7 +27,7 @@ public class mainNS extends Application {
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Inserisci Note Spese");
         try {
-            URL fxmlpath = mainNS.class.getResource("/fxml/NoteSpese.fxml");
+            URL fxmlpath = mainNS.class.getResource("/fxml/mixTipiNote.fxml");
 
 
             FXMLLoader loader = new FXMLLoader();
@@ -47,12 +48,13 @@ public class mainNS extends Application {
 
     public static void main(String[] args) {
 
-        Locale.setDefault(Locale.US);
-      Date date = new Date();
-
-        NoteSpeseDao noteSpeseDao = new NoteSpeseDao();
-        boolean res = noteSpeseDao.inserisciNoteSpese(80, date, date, "viaggio1", "bologna", "milano");
-        boolean res2 = noteSpeseDao.inserisciNoteSpese(25, date, date, "viaggio2", "acqualagna", "falconara");
+        TipoSpesaDao dao = new TipoSpesaDao();
+        
+         dao.inserisciTipoSpesa("uffa", "1.000", "22%");
+        dao.inserisciTipoSpesa("altro", "87", "12%");
+        dao.inserisciTipoSpesa("dai", "a000", "sdsa%");
+ //       boolean res = noteSpeseDao.inserisciNoteSpese("qqq", "123", "456", "viaggio1", "bologna", "milano");
+//        boolean res2 = noteSpeseDao.inserisciNoteSpese("www", "asd", "qwert", "viaggio2", "acqualagna", "falconara");
         launch(args);
 
 

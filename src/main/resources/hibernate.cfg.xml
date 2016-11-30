@@ -5,7 +5,10 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.url">jdbc:hsqldb:file:~\NotaSpeseDB</property>
-        <!--Configurazione del DB - DRIVER, DIALETTO SQL, Server location user e pass  segnamoci che semb ra case INSENSITIVE-->
+        <!--Configurazione del DB - DRIVER, DIALETTO SQL, Server location user e pass  segnamoci che semb ra case INSENSITIVE
+        
+        org.hibernate.dialect.HSQLDialect
+        -->
         <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect </property>
         <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
         <property name="hibernate.connection.username">SA</property>

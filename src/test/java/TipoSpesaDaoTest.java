@@ -12,7 +12,7 @@ public class TipoSpesaDaoTest {
 
     @Test
     public void inserisciTipoSpesaTest(){
-        String descrizione = "Ciccio";
+        String descrizione = "Benzina";
         String importo = "3332.78";
         String iva = "22";
 

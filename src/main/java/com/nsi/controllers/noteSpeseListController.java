@@ -79,9 +79,9 @@ public class noteSpeseListController /*implements Initializable*/ {
 
         System.out.println("setto i parametri PID: " + noteSpese);
 
-        numeroField.setText(Integer.toString(noteSpese.getNumero()));
-        data_dalField.setText(noteSpese.getData_dal().toString());
-        data_alField.setText(noteSpese.getData_dal().toString());
+    //    numeroField.setText(Integer.toString(noteSpese.getNumero()));
+       // data_dalField.setText(noteSpese.getData_dal().toString());
+   //     data_alField.setText(noteSpese.getData_dal().toString());
         viaggioField.setText(noteSpese.getViaggio());
         partenzaField.setText(noteSpese.getPartenza());
         ritornoField.setText(noteSpese.getRitorno());
@@ -109,10 +109,10 @@ public class noteSpeseListController /*implements Initializable*/ {
                 String ritorno = ritornoField.getText();
 
 
-                nscUNO.setNumero(numero);
-                nscUNO.setData_al(data2);
-                nscUNO.setData_dal(data1);
-                nscUNO.setViaggio(viaggio);
+             //   nscUNO.setNumero(numero);
+         //       nscUNO.setData_al(data2);
+          //      nscUNO.setData_dal(data1);
+              nscUNO.setViaggio(viaggio);
                 nscUNO.setPartenza(partenza);
                 nscUNO.setRitorno(ritorno);
 

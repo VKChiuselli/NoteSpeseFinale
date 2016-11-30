@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pannelloLNS" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nsi.controllers.listaNoteSpeseController">
+   <children>
+      <TableView fx:id="tableView" layoutX="-19.0" prefHeight="604.0" prefWidth="1008.0" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="-19.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="agenteColumn" prefWidth="126.0" text="Agente" />
+           <TableColumn fx:id="matricolaColumn" prefWidth="133.0" text="Matricola" />
+           <TableColumn fx:id="ufficioColumn" prefWidth="125.0" text="ufficio" />
+           <TableColumn fx:id="viaggioColumn" prefWidth="199.0" text="Viaggio" />
+           <TableColumn fx:id="prtenzaColumn" prefWidth="179.0" text="Partenza" />
+           <TableColumn fx:id="ritornoColumn" minWidth="0.0" prefWidth="111.0" text="Ritorno" />
+            <TableColumn fx:id="tipiSpeseColumn" minWidth="0.0" prefWidth="111.0" text="TipiSpese" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

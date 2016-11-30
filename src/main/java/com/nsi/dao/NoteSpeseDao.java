@@ -1,10 +1,13 @@
 package com.nsi.dao;
 
 import com.nsi.pojo.NoteSpese;
+import com.nsi.pojo.TipiSpese;
 import javafx.collections.ObservableList;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.*;
+import javafx.beans.property.SetProperty;
 
 /**
  * Created by v.chiuselli on 17/10/2016.
@@ -17,19 +20,18 @@ public class NoteSpeseDao extends GenericDao {
     }
 
 
-    public boolean inserisciNoteSpese(int numero, Object data_dal, Object data_al, String viaggio, String partenza, String ritorno) {
+    public boolean inserisciNoteSpese(String agente, String matricola, String ufficio, String viaggio, String partenza, String ritorno, Set<TipiSpese> tipoSpesa) {
 
         boolean risposta = false;
         NoteSpese noteSpese = new NoteSpese();
-        //noteSpese.setId(id);
-        //noteSpese.setId(null);
-        noteSpese.setNumero(numero);
-        noteSpese.setData_dal(data_dal);
-        noteSpese.setData_al(data_al);
+      
+        noteSpese.setAgente(agente);
+        noteSpese.setMatricola(matricola);
+        noteSpese.setUfficio(ufficio);
         noteSpese.setViaggio(viaggio);
         noteSpese.setPartenza(partenza);
         noteSpese.setRitorno(ritorno);
-
+      noteSpese.setTipiSpese(tipoSpesa);
 //
 //        noteSpese.setTotali(0);
 //        noteSpese.setIva(22);
