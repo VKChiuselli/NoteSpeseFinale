@@ -36,7 +36,6 @@ public class TipiSpese implements Externalizable {
     private Set<NoteSpese> noteSpese = new HashSet<NoteSpese>(0);
     
     
-    
     public Set<NoteSpese> getNoteSpese() {
         return noteSpese;
     }

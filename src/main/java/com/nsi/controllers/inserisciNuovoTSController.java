@@ -1,11 +1,12 @@
 package com.nsi.controllers;
 
 import com.nsi.dao.TipoSpesaDao;
+import com.nsi.mainNS;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import javafx.fxml.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -45,18 +46,20 @@ public class inserisciNuovoTSController {
     @FXML
     private Label error3;
 
-  TipoSpesaDao tsd = new TipoSpesaDao();
+    TipoSpesaDao tsd = new TipoSpesaDao();
 
     public void SalvaNuovoTS(ActionEvent actionEvent) {
 
-        if(controllaCampi()){
+        if (controllaCampi()) {
 
-        tsd.inserisciTipoSpesa(descField.getText(),importoField.getText(),ivaField.getText());
+            tsd.inserisciTipoSpesa(descField.getText(), importoField.getText(), ivaField.getText());
 
+         
             error1.setText("");
             descField.clear();
             importoField.clear();
             ivaField.clear();
+
             Alert informaz = new Alert(Alert.AlertType.INFORMATION);
             informaz.setTitle("Inserimento Spesa");
             informaz.setHeaderText(null);
@@ -64,14 +67,19 @@ public class inserisciNuovoTSController {
 
             informaz.showAndWait();
         }
+        
+         /*  URL fxmlpath = inserisciNuovoTSController.class.getResource("/fxml/mixTipiNoteController.fxml");
+            FXMLLoader loader = new FXMLLoader(fxmlpath);
+            mixTipiNoteController controller = loader.getController();
+
+            controller.TipiSpesecomboBoxMix.setItems(controller.dao.mostraDescrizioni());*/
+        
     }
 
-
-
-    public boolean controllaCampi(){
+    public boolean controllaCampi() {
         boolean controllo = false;
 
-        if(descField.getText().isEmpty()){
+        if (descField.getText().isEmpty()) {
             error1.setText("Campo obbligatorio!!");
             Alert allerta = new Alert(Alert.AlertType.WARNING);
             allerta.initOwner(insTS.getScene().getWindow());
@@ -82,28 +90,28 @@ public class inserisciNuovoTSController {
             allerta.showAndWait();
 
             return controllo;
-        }else if(importoField.getText().isEmpty() || ivaField.getText().isEmpty()  ){
+        } else if (importoField.getText().isEmpty() || ivaField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Sicuro?");
             alert.setHeaderText(null);
             alert.setContentText("Sei sicuro di voler inserire una spesa senza importo/iva?");
 
             Optional<ButtonType> risultato = alert.showAndWait();
-            if(risultato.get() == ButtonType.OK){
+            if (risultato.get() == ButtonType.OK) {
                 controllo = true;
-            }else{
+            } else {
                 controllo = false;
             }
 
-        }else {
+        } else {
             controllo = true;
         }
 
         return controllo;
-}
+    }
+
     @FXML
     void initialize() {
-       
 
     }
 }

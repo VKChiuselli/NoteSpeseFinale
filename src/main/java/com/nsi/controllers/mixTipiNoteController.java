@@ -126,7 +126,7 @@ public class mixTipiNoteController {
     private Button inserisciNuovoTipoSpesa;
 
     @FXML
-    private ComboBox<String> TipiSpesecomboBoxMix;
+    ComboBox<String> TipiSpesecomboBoxMix;
 
     @FXML
     private Button inserisciTS;
@@ -139,10 +139,8 @@ public class mixTipiNoteController {
     @FXML
     public void initialize() {
 
-        
         dao.caricaSpese();
-       
-        
+
         TipiSpesecomboBoxMix.setItems(dao.mostraDescrizioni());
 
     }
@@ -167,7 +165,7 @@ public class mixTipiNoteController {
             tabelMix.setItems(lista2);
         }
 
-        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX LISTA"+ lista2.get(0).getId());
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX LISTA" + lista2.get(0).getId());
     }
 
     @FXML
@@ -194,11 +192,17 @@ public class mixTipiNoteController {
     @FXML
     void salvaNoteTipiSpese(ActionEvent event) {
 
-        
-      //  NoteSpeseDao dao = new NoteSpeseDao();
-      //  dao.inserisciNoteSpese(agenteField.getText(), matricolaField.getText(), ufficioField.getText(), viaggioField.getText(),
-     //           partenzaField.getText(), ritornoField.getText(), lista2);
-        
+        NoteSpeseDao dao = new NoteSpeseDao();
+
+        dao.inserisciNoteSpese(agenteField.getText(), matricolaField.getText(), ufficioField.getText(), viaggioField.getText(),
+                partenzaField.getText(), ritornoField.getText(), lista2);
+
+        agenteField.clear();
+        matricolaField.clear();
+        ufficioField.clear();
+        viaggioField.getText();
+        partenzaField.getText();
+        ritornoField.getText();
         
     }
 

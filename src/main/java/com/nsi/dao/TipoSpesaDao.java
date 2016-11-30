@@ -26,8 +26,7 @@ public class TipoSpesaDao extends GenericDao {
             System.out.println(e);
         }
         
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdammi l'id"+ tipoSpesa.getId());
-        
+         
         return risposta;
     }
 

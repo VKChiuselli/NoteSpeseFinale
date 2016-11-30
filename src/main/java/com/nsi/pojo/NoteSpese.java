@@ -59,10 +59,10 @@ public class NoteSpese implements Externalizable {
 
    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "tipiSpese", nullable = true)
-    private Set<TipiSpese> _tipiSpese;
+    private List<TipiSpese> _tipiSpese;
 
-    @Transient
-    private SetProperty<TipiSpese> tipiSpese; 
+   @Transient
+    private ListProperty<TipiSpese> tipiSpese; 
 
     public String getId() {
         return id;
@@ -72,8 +72,8 @@ public class NoteSpese implements Externalizable {
         this.id = id;
     }
 
-    public NoteSpese(String _agente, String _matricola, String _viaggio, String _partenza, String _ritorno) {
-        //this._tipiSpese = tipiSpese;
+    public NoteSpese(String _agente, String _matricola, String _viaggio, String _partenza, String _ritorno, List<TipiSpese> tipiSpese) {
+        this._tipiSpese = tipiSpese;
         this._agente = _agente;
         this._matricola = _matricola;
         this._viaggio = _viaggio;
@@ -128,11 +128,11 @@ public class NoteSpese implements Externalizable {
     }
 
     
-      public void setTipiSpese(Set<TipiSpese> c) {
+      public void setTipiSpese(List<TipiSpese> c) {
      if (this.tipiSpese == null) {
             _tipiSpese =  tipiSpese;
         } else {
-            this.tipiSpese.set((SetProperty)tipiSpese);
+            this.tipiSpese.set(tipiSpese);
         }
     }
     

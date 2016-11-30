@@ -19,20 +19,60 @@ public class NoteSpeseDao extends GenericDao {
         super();
     }
 
-
-    public boolean inserisciNoteSpese(String agente, String matricola, String ufficio, String viaggio, String partenza, String ritorno, Set<TipiSpese> tipoSpesa) {
+    public boolean inserisciNoteSpese(String agente, String matricola, String ufficio, String viaggio, String partenza, String ritorno, List<TipiSpese> tipoSpesa) {
 
         boolean risposta = false;
         NoteSpese noteSpese = new NoteSpese();
-      
+
         noteSpese.setAgente(agente);
         noteSpese.setMatricola(matricola);
         noteSpese.setUfficio(ufficio);
         noteSpese.setViaggio(viaggio);
         noteSpese.setPartenza(partenza);
         noteSpese.setRitorno(ritorno);
-      noteSpese.setTipiSpese(tipoSpesa);
-//
+        noteSpese.setTipiSpese(tipoSpesa);
+
+
+        try {
+            if (save(noteSpese) != null) {
+                risposta = true;
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e);
+        }
+
+        return risposta;
+
+    }
+
+    public boolean updateNoteSpese(NoteSpese noteSpese) {
+        boolean risposta = false;
+
+        try {
+            save(noteSpese);
+            risposta = true;
+
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+
+        }
+        System.out.println("LA RISPOSTA E'::::::::::::>>>> " + risposta);
+        return risposta;
+
+    }
+
+    public ObservableList<NoteSpese> caricaNoteSpese() {
+
+        ObservableList<NoteSpese> noteSpeseList;
+
+        noteSpeseList = filtrableQuery("select u from NoteSpese u", null);
+        return noteSpeseList;
+    }
+
+}
+
+
+
 //        noteSpese.setTotali(0);
 //        noteSpese.setIva(22);
 //        noteSpese.setSpese_rappresentanza(0);
@@ -47,55 +87,3 @@ public class NoteSpeseDao extends GenericDao {
 //        noteSpese.setCosto_km(0);
 //        noteSpese.setData_rimborso_km(null);
 //        noteSpese.setTotale_km(0);
-
-
-
-
-        try {
-            if(save(noteSpese) != null) {
-                risposta = true;
-            }
-        } catch (RuntimeException e) {
-            System.out.println(e);
-        }
-
-
-
-
-
-        return risposta;
-
-    }
-
-
-    public boolean updateNoteSpese( NoteSpese noteSpese)
-    {
-        boolean risposta= false;
-
-
-
-
-        try {
-            save(noteSpese);
-                risposta = true;
-
-        } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
-
-        }
-        System.out.println("LA RISPOSTA E'::::::::::::>>>> " + risposta);
-return risposta;
-
-    }
-
-
-    public ObservableList<NoteSpese> caricaNoteSpese(){
-
-        ObservableList<NoteSpese> noteSpeseList;
-
-        noteSpeseList = filtrableQuery("select u from NoteSpese u",null);
-        return noteSpeseList ;
-    }
-
-
-}
